@@ -1,5 +1,0 @@
-# the main purpose of ignoring
-node_modules
-# just in case #
-.idea
-.tmp

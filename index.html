@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="PharmacyApp" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Document</title>
+
+	<link rel="stylesheet" href="main.css"></link>
+</head>
+<body>
+	
+	<div ng-controller="MainController as mc">
+		
+		<div id="top-bar">
+			<select ng-change="mc.changeLimit()" class="select-limit"  ng-options="limit for limit in mc.limitOptions" ng-model="mc.selectedOption">
+			</select>
+
+			<div class="pagination-section">
+				<input class="pgn-button" type="button" value="НАЗАД" ng-click="mc.previousPage()">
+				<input class="pgn-button" type="button" ng-repeat="page in mc.pageNumbers" ng-click="mc.getPage(page)" value="{{page}}">
+				<input class="pgn-button" type="button" value="ДАЛЕЕ" ng-click="mc.nextPage()">
+			</div>
+		</div>
+
+		<div class="hor-line"></div>
+
+		<div class="main-container">
+			<div class="item-drug" ng-repeat="drug in mc.drugs">
+				<p class="item-drug__title">{{drug.title}}</p>
+				<img class="item-drug__img" ng-src="{{drug.image_url}}" alt="no-product-image" onerror="this.src='no-product-image.png';">
+				<p class="item-drug__cat">{{drug.category}}</p>
+			</div>	
+		</div>
+
+		<div class="pagination-section">
+			<input class="pgn-button" type="button" value="НАЗАД" ng-click="mc.previousPage()">
+			<input class="pgn-button" type="button" ng-repeat="page in mc.pageNumbers" ng-click="mc.getPage(page)" value="{{page}}">
+			<input class="pgn-button" type="button" value="ДАЛЕЕ" ng-click="mc.nextPage()">
+		</div>
+		
+	
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
