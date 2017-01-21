@@ -11,17 +11,18 @@ body{
   	   main 
    ---------------- */
 #top-bar{
+	margin-top:15px;
 	display: flex;
 	justify-content: space-between;
 }
 #top-bar >.pagination-section{
-	margin:auto;
+	margin:0;
 }
 
 .hor-line{
-	margin-top:10px;
+	margin:30px 0;
 	height:2px;
-	background-color: #DBDBDB;
+	background-color: #6E6E6E;
 }
 
 .select-limit{
@@ -31,10 +32,12 @@ body{
 	margin:0 5px;
 	border:1px solid #DBDBDB;
 	transition:0.3s all ease;
+	cursor: pointer;
 }
 .select-limit:hover, .select-limit:focus{
 	border:1px solid #000;
 	outline:0;
+	cursor: pointer;
 }
 
 .main-container{
@@ -63,6 +66,17 @@ body{
 
 .item-drug__title{
 	text-align: center;
+	color:#75050C;
+
+}
+
+.item-drug__img-cont{
+	width:180px;
+	height:180px;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	margin:5px auto;
 }
 
 .item-drug__img{
@@ -81,6 +95,47 @@ body{
 	color: #4B4B4B;
 }
 
+.details{
+	font-size:12px;
+}
+.details:hover{
+	cursor: pointer;
+}
+
+.drug-item__tooltip{
+	position: absolute;
+	padding:10px;
+	font-size:12px;
+	background-color: #fff;
+	border:1px solid #DBDBDB;
+}
+
+.drug-item__tooltip:hover{
+	border:1px solid #000;
+}
+
+.drug-info{
+	padding:5px;
+}
+
+.drug-info-item{
+	margin:3px;
+}
+
+.drug-info-item__link{
+	text-decoration: none;
+	color:#75050C;
+}
+
+.tooltip-close{
+	position: absolute;
+	top:5px;
+	right:5px;
+	cursor: pointer;
+	background-color: transparent;
+	border:none;
+	outline:0;
+}
 /* --------------
  	 pagination
    --------------  */
@@ -101,9 +156,11 @@ body{
 	margin:0 5px;
 	border:1px solid #DBDBDB;
 	transition:0.3s all ease;
+	cursor:pointer;
 }
 .pgn-button:hover, .pgn-button:focus{
 	border:1px solid #000;
 	outline:0;
+	cursor:pointer;
 }
 

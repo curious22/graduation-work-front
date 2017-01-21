@@ -13,7 +13,7 @@
 	<div ng-controller="MainController as mc">
 		
 		<div id="top-bar">
-			<select ng-change="mc.changeLimit()" class="select-limit"  ng-options="limit for limit in mc.limitOptions" ng-model="mc.selectedOption">
+			<select ng-change="mc.changeLimit(mc.selectedOption)" class="select-limit"  ng-options="limit for limit in mc.limitOptions" ng-model="mc.selectedOption">
 			</select>
 
 			<div class="pagination-section">
@@ -28,10 +28,29 @@
 		<div class="main-container">
 			<div class="item-drug" ng-repeat="drug in mc.drugs">
 				<p class="item-drug__title">{{drug.title}}</p>
-				<img class="item-drug__img" ng-src="{{drug.image_url}}" alt="no-product-image" onerror="this.src='no-product-image.png';">
-				<p class="item-drug__cat">{{drug.category}}</p>
+				<p class="item-drug__cat">	{{drug.category}}</p>
+
+				<div class="item-drug__img-cont">
+					<img class="item-drug__img" ng-src="{{drug.image_url}}" alt="no-product-image" onerror="this.src='no-product-image.png';">
+				</div>
+				<span ng-click="mc.showTooltip(drug)" class="details">подробнее</span>
+
+				<div class="drug-item__tooltip" ng-show="drug.tooltipShown">
+					<button class="tooltip-close" ng-click="mc.closeTooltip(drug)">ЗАКРЫТЬ</button>
+				
+				<div class="drug-info">
+					<div class="drug-info-item" ng-repeat="info in drug.price_data" >
+						<b>Цена</b> : {{info.price}} {{info.currency}}<br/>
+						<b>Производитель</b>: {{info.manufacturer}}<br/>
+						<a class="drug-info-item__link" href="{{info.utl}}">сайт дистрибьютора</a>
+					</div>
+				</div>
+
+				</div>
 			</div>	
 		</div>
+
+		<div class="hor-line"></div>
 
 		<div class="pagination-section">
 			<input class="pgn-button" type="button" value="НАЗАД" ng-click="mc.previousPage()">

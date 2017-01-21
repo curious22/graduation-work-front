@@ -25,13 +25,19 @@
 		mc.pageNumbers = [];
 		mc.limitOptions = [10,20,40];
 		mc.selectedOption = 20;
+		mc.tooltipShown = false;
 		// ----------------
 		// init
 		getDrugs();
 
+
+		/**
+		 * [getDrugs description]
+		 * @param  {[type]} params [description]
+		 * @return {[type]}        [description]
+		 */
  		function getDrugs(params){
  			var params = params || mc.params;
- 			console.warn(params);
  			if(params.page < 0){
  				return;
  			}
@@ -56,7 +62,16 @@
 					mc.pageNumbers.push(start);
 					start ++;
 				}
-				console.warn(mc.pageNumbers);
+		};
+
+		// TOOLTIP FUNCTIONS
+
+		mc.showTooltip = function(obj){
+			obj.tooltipShown = true;
+		};
+
+		mc.closeTooltip = function(obj){
+			obj.tooltipShown = false;
 		};
 
 		//--------------------
@@ -64,7 +79,7 @@
 
 		mc.changeLimit = function(value){
 			var params = mc.params;
-			params.limit = mc.selectedOptin = value;
+			mc.selectedOption = params.limit  = value;
 			getDrugs(params);
 		}
 
