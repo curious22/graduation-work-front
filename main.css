@@ -4,14 +4,78 @@ body{
 	display: flex;
 	flex-direction: column;
 	font-family: 'Roboto', sans-serif;
-
+	margin:0;
+	padding:0;
 }
 
 /* ----------------
   	   main 
    ---------------- */
+#app{
+	display: flex;
+}
+#sidebar{
+	flex-shrink: 0;
+	width:230px;
+	padding:20px;
+	position: relative;
+}
+
+#search-widget{
+	position: fixed;
+}
+
+#search-field{
+	display: flex;
+}
+.search-field-label{
+	display: block;
+	margin:10px 0;
+}
+
+#search-field-text{
+	width:120px;
+	background-color: #fff;
+	padding:9px 12px;
+	border:1px solid #DBDBDB;
+	transition:0.3s all ease;
+}
+
+#search-field-btn{
+	background-color: #fff;
+	padding:9px 12px;
+	border:1px solid #DBDBDB;
+	transition:0.3s all ease;
+	cursor: pointer;
+}
+
+#search-field-text:hover, #search-field-btn:hover,
+#search-field-text:focus, #search-field-btn:focus{
+	outline:0;
+	border:1px solid #000;
+
+}
+
+#categories{
+	margin-top:50px;
+}
+
+.category-item{
+	margin-top:5px;
+	font-size:12px;
+	display: block;
+}
+
+#main{
+	/*flex-grow: 1;*/
+	border-left: 1px solid #DBDBDB;
+	padding:0 0 20px 20px;
+
+
+}
+
 #top-bar{
-	margin-top:15px;
+	margin-top:30px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -19,17 +83,11 @@ body{
 	margin:0;
 }
 
-.hor-line{
-	margin:30px 0;
-	height:2px;
-	background-color: #6E6E6E;
-}
 
 .select-limit{
 	background-color: #fff;
 	font-size:16px;
 	padding:9px 12px;
-	margin:0 5px;
 	border:1px solid #DBDBDB;
 	transition:0.3s all ease;
 	cursor: pointer;
@@ -46,15 +104,14 @@ body{
 	justify-content: space-around;
 	width:95%;
 	padding:25px 0;
-	margin:0 auto;
 }
 
 .item-drug{
-	width:300px;
+	width:200px;
 	min-width:200px;
 	min-height:200px;
-	padding:15px;
-	margin-top:20px;
+	padding:10px;
+	margin:10px 2px;
 	border:1px solid #DBDBDB;
 	transition: 0.2s all ease;
 }
@@ -71,8 +128,8 @@ body{
 }
 
 .item-drug__img-cont{
-	width:180px;
-	height:180px;
+	width:150px;
+	height:150px;
 	display: flex;
 	justify-content:center;
 	align-items: center;
@@ -83,8 +140,8 @@ body{
 	display: block;
 	margin:0 auto;
 	width:100%;
-	max-width:180px;
-	max-height:180px;
+	max-width:150px;
+	max-height:150px;
 
 }
 

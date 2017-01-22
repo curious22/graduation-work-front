@@ -10,55 +10,72 @@
 </head>
 <body>
 	
-	<div ng-controller="MainController as mc">
-		
-		<div id="top-bar">
-			<select ng-change="mc.changeLimit(mc.selectedOption)" class="select-limit"  ng-options="limit for limit in mc.limitOptions" ng-model="mc.selectedOption">
-			</select>
+	<div id="app" ng-controller="MainController as mc">
+
+		<aside id="sidebar">
+			<div id="search-widget">
+			<label class="search-field-label">Поиск по названию</label>
+			<div id="search-field">
+				<input id="search-field-text" type="text" ng-model="mc.title" placeholder="Название">
+				<input id="search-field-btn" value="ПОИСК" type="button" ng-click="mc.searchWithTitle(mc.title);">			
+			</div>
+	
+			<label class="search-field-label">Поиск по категории</label>
+			<div id="search-field">
+				<input id="search-field-text" type="text" ng-model="mc.catg" placeholder="Категория ">
+				<input id="search-field-btn" value="ПОИСК" type="button" ng-click="mc.searchWithCategory(mc.catg);">			
+			</div>
+	
+			</div>
+		</aside>
+
+		<main id="main">
+
+
+			<div id="top-bar">
+				<select ng-change="mc.changeLimit(mc.selectedOption)" class="select-limit"  ng-options="limit for limit in mc.limitOptions" ng-model="mc.selectedOption">
+				</select>
+				<div class="pagination-section">
+					<input class="pgn-button" type="button" value="НАЗАД" ng-click="mc.previousPage()">
+					<input class="pgn-button" type="button" ng-repeat="page in mc.pageNumbers" ng-click="mc.getPage(page)" value="{{page}}">
+					<input class="pgn-button" type="button" value="ДАЛЕЕ" ng-click="mc.nextPage()">
+				</div>
+	
+			</div>
+			
+
+			<div class="main-container">
+				<div class="item-drug" ng-repeat="drug in mc.drugs">
+					<p class="item-drug__title">{{drug.title}}</p>
+					<p class="item-drug__cat">	{{drug.category}}</p>
+
+					<div class="item-drug__img-cont">
+						<img class="item-drug__img" ng-src="{{drug.image_url}}" alt="no-product-image" onerror="this.src='no-product-image.png';">
+					</div>
+					<span ng-click="mc.showTooltip(drug)" class="details">подробнее</span>
+
+					<div class="drug-item__tooltip" ng-show="drug.tooltipShown">
+						<button class="tooltip-close" ng-click="mc.closeTooltip(drug)">ЗАКРЫТЬ</button>
+					
+					<div class="drug-info">
+						<div class="drug-info-item" ng-repeat="info in drug.price_data" >
+							<b>Цена</b> : {{info.price}} {{info.currency}}<br/>
+							<b>Производитель</b>: {{info.manufacturer}}<br/>
+							<a class="drug-info-item__link" href="{{info.url}}">сайт дистрибьютора</a>
+						</div>
+					</div>
+
+					</div>
+				</div>	
+			</div>
+
 
 			<div class="pagination-section">
 				<input class="pgn-button" type="button" value="НАЗАД" ng-click="mc.previousPage()">
 				<input class="pgn-button" type="button" ng-repeat="page in mc.pageNumbers" ng-click="mc.getPage(page)" value="{{page}}">
 				<input class="pgn-button" type="button" value="ДАЛЕЕ" ng-click="mc.nextPage()">
-			</div>
-		</div>
-
-		<div class="hor-line"></div>
-
-		<div class="main-container">
-			<div class="item-drug" ng-repeat="drug in mc.drugs">
-				<p class="item-drug__title">{{drug.title}}</p>
-				<p class="item-drug__cat">	{{drug.category}}</p>
-
-				<div class="item-drug__img-cont">
-					<img class="item-drug__img" ng-src="{{drug.image_url}}" alt="no-product-image" onerror="this.src='no-product-image.png';">
-				</div>
-				<span ng-click="mc.showTooltip(drug)" class="details">подробнее</span>
-
-				<div class="drug-item__tooltip" ng-show="drug.tooltipShown">
-					<button class="tooltip-close" ng-click="mc.closeTooltip(drug)">ЗАКРЫТЬ</button>
-				
-				<div class="drug-info">
-					<div class="drug-info-item" ng-repeat="info in drug.price_data" >
-						<b>Цена</b> : {{info.price}} {{info.currency}}<br/>
-						<b>Производитель</b>: {{info.manufacturer}}<br/>
-						<a class="drug-info-item__link" href="{{info.utl}}">сайт дистрибьютора</a>
-					</div>
-				</div>
-
-				</div>
 			</div>	
-		</div>
-
-		<div class="hor-line"></div>
-
-		<div class="pagination-section">
-			<input class="pgn-button" type="button" value="НАЗАД" ng-click="mc.previousPage()">
-			<input class="pgn-button" type="button" ng-repeat="page in mc.pageNumbers" ng-click="mc.getPage(page)" value="{{page}}">
-			<input class="pgn-button" type="button" value="ДАЛЕЕ" ng-click="mc.nextPage()">
-		</div>
-		
-	
+		</main>		
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>

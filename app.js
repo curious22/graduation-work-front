@@ -16,13 +16,16 @@
 		// 
 		mc.params = {
 			page : 0,
-			limit : 20	
+			limit : 20,
+			title : '',
+			category: ''
 		};
 		// ----------------
 		// defaults
 		mc.pagesCount = 0;
 		mc.curentPage = 0;
 		mc.pageNumbers = [];
+		mc.categories = [];
 		mc.limitOptions = [10,20,40];
 		mc.selectedOption = 20;
 		mc.tooltipShown = false;
@@ -47,7 +50,6 @@
 					mc.pagesCount = response.data.pages;
 					mc.currentPage = response.data.page;
 					createPagination();
-					console.warn(response);
 				},
 				function error(error){
 					console.warn(error);
@@ -62,6 +64,20 @@
 					mc.pageNumbers.push(start);
 					start ++;
 				}
+		};
+
+		// FILTERING WITH CATEGORIES AND TITLE 
+
+		mc.searchWithCategory = function(category){
+			var params = mc.params;
+			mc.selectedOption = params.category  = category;
+			getDrugs(params)
+		};
+
+		mc.searchWithTitle = function(title){
+			var params = mc.params;
+			mc.selectedOption = params.title  = title;
+			getDrugs(params)
 		};
 
 		// TOOLTIP FUNCTIONS
