@@ -68,14 +68,9 @@
 
 		// FILTERING WITH CATEGORIES AND TITLE 
 
-		mc.searchWithCategory = function(category){
+		mc.searchWithParams = function(title,category){
 			var params = mc.params;
 			mc.selectedOption = params.category  = category;
-			getDrugs(params)
-		};
-
-		mc.searchWithTitle = function(title){
-			var params = mc.params;
 			mc.selectedOption = params.title  = title;
 			getDrugs(params)
 		};

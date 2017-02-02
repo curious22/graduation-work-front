@@ -14,18 +14,17 @@
 
 		<aside id="sidebar">
 			<div id="search-widget">
-			<label class="search-field-label">Поиск по названию</label>
+	
+			<label class="search-field-label">Поиск</label>
 			<div id="search-field">
-				<input id="search-field-text" type="text" ng-model="mc.title" placeholder="Название">
-				<input id="search-field-btn" value="ПОИСК" type="button" ng-click="mc.searchWithTitle(mc.title);">			
+				<div id="search-field__inputs">
+					<input id="search-field-text" type="text" ng-model="mc.title" placeholder="Название">
+					<input id="search-field-text" type="text" ng-model="mc.catg" placeholder="Категория ">	
+				</div>
+				<input id="search-field-btn" value="ПОИСК" type="button" ng-click="mc.searchWithParams(mc.title, mc.catg);">			
 			</div>
 	
-			<label class="search-field-label">Поиск по категории</label>
-			<div id="search-field">
-				<input id="search-field-text" type="text" ng-model="mc.catg" placeholder="Категория ">
-				<input id="search-field-btn" value="ПОИСК" type="button" ng-click="mc.searchWithCategory(mc.catg);">			
-			</div>
-	
+
 			</div>
 		</aside>
 

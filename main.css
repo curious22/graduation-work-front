@@ -27,21 +27,31 @@ body{
 
 #search-field{
 	display: flex;
+	flex-direction: column;
+
 }
+
+#search-field__inputs{
+	display: flex;
+	flex-direction: column;
+}
+
 .search-field-label{
 	display: block;
 	margin:10px 0;
 }
 
 #search-field-text{
-	width:120px;
+	/*width:120px;*/
 	background-color: #fff;
 	padding:9px 12px;
+	margin-bottom:10px;
 	border:1px solid #DBDBDB;
 	transition:0.3s all ease;
 }
 
 #search-field-btn{
+	max-width:80px;
 	background-color: #fff;
 	padding:9px 12px;
 	border:1px solid #DBDBDB;
